@@ -148,7 +148,7 @@
 						<input type="text"
 							class="form-control" id="cep" data-mask="00000-000"
 							th:field="*{endereco.cep}"
-							th:classappend="${#fields.hasErros('endereco.cep')} ? 'is-invalid'" />
+							th:classappend="${#fields.hasErrors('endereco.cep')} ? 'is-invalid'" />
 						<div class="invalid-feedback">
 							<span th:errors="*{endereco.cep}"></span>
 						</div>

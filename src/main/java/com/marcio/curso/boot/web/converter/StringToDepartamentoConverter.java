@@ -1,7 +1,6 @@
 package com.marcio.curso.boot.web.converter;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 

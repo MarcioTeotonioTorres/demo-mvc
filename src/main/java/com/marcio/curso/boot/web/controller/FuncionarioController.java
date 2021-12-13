@@ -11,7 +11,9 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +26,7 @@ import com.marcio.curso.boot.domain.Funcionario;
 import com.marcio.curso.boot.domain.UF;
 import com.marcio.curso.boot.services.CargoService;
 import com.marcio.curso.boot.services.FuncionarioService;
+import com.marcio.curso.boot.web.validator.FuncionarioValidator;
 
 @Controller
 @RequestMapping("/funcionarios")
@@ -33,6 +36,13 @@ public class FuncionarioController {
 	private FuncionarioService funcionarioService;
 	@Autowired
 	private CargoService cargoService;
+	
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.addValidators(new FuncionarioValidator());
+	}
+	
+	
 
 	@GetMapping("/cadastrar")
 	public String cadastrar(Funcionario funcionario) {
@@ -112,5 +122,7 @@ public class FuncionarioController {
 
 		return "/funcionario/lista";
 	}
+	
+	
 
 }
